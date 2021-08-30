@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Weather</title>
+</head>
+<body>
+    {{>header}}
+    <div id="main-contain">
+        <form id="weather-form">
+            <div><input type="text" id="loc-input"></div>
+            <div>
+                <span>Celcius:</span>
+                <input type="radio" name="unit" checked="checked" id="metric-sel">
+                <span>Fahrenheit:</span>
+                <input type="radio" name="unit" id="imperial-sel">
+            </div>
+            <div><button>Find</button></div>
+            <div id="forecast-res"></div>
+        </form>
+
+    </div>
+    {{>footer}}
+    <script src="./js/app.js"></script>
+</body>
+</html>
