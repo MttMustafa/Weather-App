@@ -46,7 +46,13 @@ app.get('/forecast', (req,res) => {
         const unit = req.query.unit;
         getForecast({lat,lon,unit}, (error, forecastData ) => {
             if(error) return res.send({ error });
-            res.send({ forecastData });
+            res.send({ 
+                forecast: `<div><img id="forecast-ico" src=http://openweathermap.org/img/wn/${forecastData.weather.icon}@2x.png></div>
+                           <p id="forecast-desc">${forecastData.weather.main}</p>
+                           <p id="temp">Temperature: ${forecastData.main.temp}</p>
+                           <p id="felt-temp">Feels like: ${forecastData.main.feels_like}</p>
+                           <p id="humidity">Humidity: ${forecastData.main.humidity}</p>`
+             });
         });
     });
 });

@@ -10,7 +10,6 @@ const forecastForm = qs('#weather-form');
 const forecastRes = qs('#forecast-res');
 
 
-
 forecastForm.onsubmit = e => {
     e.preventDefault();
     forecastRes.innerHTML = "Loading...";
@@ -18,7 +17,7 @@ forecastForm.onsubmit = e => {
     if(fahrenheitSel.checked) unit = "imperial";
     let location = locInput.value;
     getWeatherData({location,unit}, response => {
-        console.log(response);
+        forecastRes.innerHTML = response;
     });
 }
 
@@ -27,7 +26,7 @@ function getWeatherData({unit,location}, callback) {
     fetch(`/forecast?location=${location}&unit=${unit}`).then( response => {
         response.json().then( data => {
             if(data.error) callback(data.error);
-            else callback(data);
+            else callback(data.forecast);
         });
     })
 }
