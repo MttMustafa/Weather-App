@@ -17,7 +17,7 @@ app.set('views', viewsDir);
 hbs.registerPartials(partialsDir);
 app.use(express.static(publicDir));
 
-const port = process.env.PORT | 3030;
+const port = process.env.PORT || 3030;
 
 app.get('', (req,res) => {
     res.render('index',{
@@ -66,3 +66,4 @@ app.get('*', (req,res) => {
 app.listen(port, () => {
     console.log(`Listening port ${port}...`);
 })
+
